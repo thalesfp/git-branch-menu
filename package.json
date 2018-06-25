@@ -1,0 +1,25 @@
+{
+  "name": "git-branch-menu",
+  "version": "1.0.0",
+  "description": "A simple menu to select and checkout a git branch",
+  "repository": "github.com/thalesfp/git-branch-menu",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha test/**/*.test.js",
+    "prettier": "./node_modules/prettier/bin-prettier.js --write **/*.js",
+    "lint": "./node_modules/.bin/eslint **/*.js"
+  },
+  "author": "thalesfp@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "mocha": "^5.2.0",
+    "prettier": "^1.13.6",
+    "sinon": "^6.0.1"
+  },
+  "dependencies": {
+    "inquirer": "^6.0.0"
+  }
+}

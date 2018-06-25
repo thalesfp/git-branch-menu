@@ -1,0 +1,52 @@
+const inquirer = require("inquirer");
+const { spawnSync } = require("child_process");
+
+const isTest = process.env.NODE_ENV === "test";
+
+const logger = message => !isTest && console.log(message);
+
+const shellCommand = (command, params) => {
+  const { status, stdout, stderr } = spawnSync(command, params);
+
+  if (status !== 0) {
+    logger(`Error: ${stderr.toString()}`);
+    process.exit(1);
+  }
+
+  return stdout.toString();
+};
+
+const getBranches = (executeCmd = shellCommand) => {
+  const branches = executeCmd("git", ["branch"]);
+
+  if (branches === "" || branches.length === 0) {
+    logger('Error: This repository has no branches');
+    process.exit(1);
+  }
+
+  return branches
+    .replace("\n*", "\n")
+    .split("\n")
+    .filter(e => e !== "")
+    .map(e => e.trim());
+};
+
+const doCheckout = branch => shellCommand("git", ["checkout", branch]);
+
+if (!isTest) {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "branch",
+        message: "Please choose a branch:",
+        choices: getBranches(shellCommand),
+        pageSize: 10
+      }
+    ])
+    .then(answers => {
+      doCheckout(answers.branch);
+    });
+}
+
+module.exports = { getBranches, doCheckout };
