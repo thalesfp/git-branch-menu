@@ -39,7 +39,7 @@ if (!isTest) {
       {
         type: "list",
         name: "branch",
-        message: "Please choose a branch:",
+        message: "Please choose a branch to checkout:",
         choices: getBranches(shellCommand),
         pageSize: 10
       }
