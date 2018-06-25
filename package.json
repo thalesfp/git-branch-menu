@@ -1,6 +1,6 @@
 {
   "name": "git-branch-menu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple menu to select and checkout a git branch",
   "repository": "github.com/thalesfp/git-branch-menu",
   "main": "index.js",
