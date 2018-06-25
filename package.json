@@ -4,6 +4,9 @@
   "description": "A simple menu to select and checkout a git branch",
   "repository": "github.com/thalesfp/git-branch-menu",
   "main": "index.js",
+  "bin": {
+    "git-branch-menu": "./bin/git-branch-menu.js"
+  },
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha test/**/*.test.js",
     "prettier": "./node_modules/prettier/bin-prettier.js --write **/*.js",
