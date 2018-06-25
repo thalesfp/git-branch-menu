@@ -3,19 +3,12 @@ const sinon = require('sinon');
 const { getBranches } = require('../index.js');
 
 describe('#getBranches()', () => {
-  it('should exit with status 1 when the command is executed unsucessfully', () => {
+  before(() => {
     sinon.stub(process, 'exit');
-    getBranches();
-
-    assert(process.exit.called);
-    assert(process.exit.calledWith(1));
   });
 
-  it('should return a list of branch', () => {
-    const output = '  develop\n  feature/GC-483\n*  master\n';
-    const callback = sinon.fake.returns(output);
-
-    assert(getBranches(callback), output);
+  after(() => {
+    process.exit.restore();
   });
 
   it('should exit with status 1 when there is no branches', () => {

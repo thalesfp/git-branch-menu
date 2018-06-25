@@ -10,7 +10,7 @@ const shellCommand = (command, params) => {
 
   if (status !== 0) {
     logger(`Error: ${stderr.toString()}`);
-    process.exit(1);
+    process.exit(status);
   }
 
   return stdout.toString();
@@ -31,7 +31,7 @@ const getBranches = (executeCmd = shellCommand) => {
     .map(e => e.trim());
 };
 
-const doCheckout = branch => shellCommand("git", ["checkout", branch]);
+const doCheckout = branch => logger(shellCommand("git", ["checkout", branch]));
 
 if (!isTest) {
   inquirer
@@ -49,4 +49,4 @@ if (!isTest) {
     });
 }
 
-module.exports = { getBranches, doCheckout };
+module.exports = { getBranches };
