@@ -25,7 +25,7 @@ const getBranches = (executeCmd = shellCommand) => {
   }
 
   return branches
-    .replace("\n*", "\n")
+    .replace("*", "")
     .split("\n")
     .filter(e => e !== "")
     .map(e => e.trim());
