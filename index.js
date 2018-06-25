@@ -19,7 +19,7 @@ const shellCommand = (command, params) => {
 const getBranches = (executeCmd = shellCommand) => {
   const branches = executeCmd("git", ["branch"]);
 
-  if (branches === "" || branches.length === 0) {
+  if (branches === "") {
     logger('Error: This repository has no branches');
     process.exit(1);
   }
