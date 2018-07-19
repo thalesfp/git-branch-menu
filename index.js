@@ -3,7 +3,7 @@ const { spawnSync } = require('child_process');
 
 const isTest = process.env.NODE_ENV === 'test';
 
-const logger = message => !isTest && console.log(message);
+const logger = message => !isTest && process.stdout.write(`${message}\n`);
 
 const shellCommand = (command, params) => {
   const { status, stdout, stderr } = spawnSync(command, params);

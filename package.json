@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha test/**/*.test.js",
-    "prettier": "./node_modules/prettier/bin-prettier.js --write **/*.js",
-    "lint": "./node_modules/.bin/eslint **/*.js"
+    "prettier": "prettier --write index.js",
+    "lint": "eslint **/*.js"
   },
   "author": "thalesfp@gmail.com",
   "license": "ISC",
