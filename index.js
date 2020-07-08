@@ -11,8 +11,6 @@ const logger = message => !isTest && process.stdout.write(`${message}\n`);
 const shellCommand = (command, params) => {
   const { status, stdout, stderr } = spawnSync(command, params);
 
-  logger([command, ...params].join(' '));
-
   if (status !== 0) {
     logger(`Error: ${stderr.toString()}`);
     process.exit(status);
